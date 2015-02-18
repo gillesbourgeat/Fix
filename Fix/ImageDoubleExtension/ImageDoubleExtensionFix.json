@@ -1,0 +1,16 @@
+{
+  "theliaVersion": [
+    ">= 2.0.0",
+    "< 2.2"
+  ],
+  "i18n": {
+    "fr_FR": {
+      "title": "Bug image double extension",
+      "description": "Renomme les images en base de données et dans le système de fichiers pour n'avoir plus qu'une extension. <br/> 345544.jpg-6554.jpg => 345544-6554.jpg"
+    },
+    "en_US": {
+      "title": "",
+      "description": ""
+    }
+  }
+}

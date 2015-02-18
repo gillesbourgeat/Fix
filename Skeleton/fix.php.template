@@ -1,0 +1,42 @@
+<?php
+/*************************************************************************************/
+/*      This file is part of the Fix package.                                        */
+/*                                                                                   */
+/*      For the full copyright and license information, please view the LICENSE.txt  */
+/*      file that was distributed with this source code.                             */
+/*************************************************************************************/
+
+namespace Fix\Fix\%%FIXCODE%%;
+
+use Fix\Fix\FixInterface;
+
+/**
+ * Class %%CLASSNAME%%
+ * @package Fix\Fix
+ */
+class %%CLASSNAME%% implements FixInterface
+{
+    /**
+     * @return array
+     */
+    public function checkAction()
+    {
+        $logs = array();
+
+        // your code
+
+        return $logs;
+    }
+
+    /**
+     * @return array
+     */
+    public function applyAction()
+    {
+        $logs = array();
+
+        // your code
+
+        return $logs;
+    }
+}

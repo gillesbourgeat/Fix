@@ -1,0 +1,19 @@
+{
+    "name": "gillesbourgeat/fix-module",
+    "type": "thelia-module",
+    "license": "LGPL V3",
+    "description": "Content fix and generate fix for Thelia 2",
+    "authors": [
+        {
+            "name": "Gilles Bourgeat",
+            "email": "gbourgeat@openstudio.fr",
+            "homepage": "https://github.com/gillesbourgeat"
+        }
+    ],
+    "require": {
+        "thelia/installer": "1.0"
+    },
+    "extra": {
+        "installer-name": "Fix"
+    }
+}

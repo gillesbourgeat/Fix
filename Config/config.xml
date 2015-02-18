@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns="http://thelia.net/schema/dic/config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
+
+    <loops>
+        <loop name="fix" class="Fix\Loop\FixLoop" />
+        <loop name="fixlog" class="Fix\Loop\FixLogLoop" />
+    </loops>
+
+    <forms>
+        <form name="fix.check" class="Fix\Form\Admin\FixCheckForm" />
+        <form name="fix.apply" class="Fix\Form\Admin\FixApplyForm" />
+    </forms>
+
+    <commands>
+        <command class="Fix\Command\FixGenerateCommand" />
+        <command class="Fix\Command\FixApplyCommand" />
+        <command class="Fix\Command\FixCheckCommand" />
+    </commands>
+
+    <services>
+        <service id="fix.generate" class="Fix\EventListener\FixGenerateEventListener">
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="fix.check" class="Fix\EventListener\FixCheckEventListener">
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="fix.apply" class="Fix\EventListener\FixApplyEventListener">
+            <tag name="kernel.event_subscriber" />
+        </service>
+    </services>
+
+</config>

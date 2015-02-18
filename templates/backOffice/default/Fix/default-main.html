@@ -1,0 +1,93 @@
+<div class="col-md-12">
+    <div class="general-block-decorator subModule-{$CODE}">
+
+        <div class="title">
+            {if $TITLE == ""}
+                {intl l="Fix $CODE" d="fixbug"}
+            {else}
+                {$TITLE}
+            {/if}
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            {if $DESCRIPTION == ""}
+                {intl l="Any information on this fix." d="fix"}
+            {else}
+                {$DESCRIPTION nofilter}
+
+                {if $THELIA_VERSION_MAX != ""}
+                    <span class="label label-default pull-right">{$THELIA_VERSION_MAX}</span>
+                {/if}
+                {if $THELIA_VERSION_MIN != ""}
+                    <span class="label label-default pull-right">Thelia : {$THELIA_VERSION_MIN}</span>
+                {/if}
+            {/if}
+        </div>
+
+        {if $fixCode == $CODE && $error}
+        <div class="alert alert-danger" role="alert">
+            {$error_message}
+        </div>
+        {/if}
+
+        {if $fixCode == $CODE && $logs}
+        <div class="alert alert-warning" role="alert">
+            {if $action == 'check'}
+                <div class="title">{intl l="Log after check" d="fix"}</div>
+            {else}
+                <div class="title">{intl l="Log after apply" d="fix"}</div>
+            {/if}
+
+            <ul>
+                {foreach from=$logs item=log}
+                    <li>{$log}</li>
+                {/foreach}
+            </ul>
+        </div>
+        {/if}
+
+        {form name="fix.apply"}
+
+            <form method="POST" action="{url path="/admin/module/Fix/apply/$CODE"}#{$CODE}" class="form-horizontal pull-right" style="margin: 5px;">
+
+                {form_hidden_fields form=$form}
+
+                {form_field form=$form field='success_url'}
+                    <input {if $accessInfo < 3}disabled {/if}type="hidden" name="{$name}" value="{url path="/admin/module/Fix"}" />
+                {/form_field}
+
+                <button type="submit" class="btn btn-warning btn-js-loader" >{intl l="Apply" d="fix"}</button>
+            </form>
+
+        {/form}
+
+        {form name="fix.check"}
+
+            <form method="POST" action="{url path="/admin/module/Fix/check/$CODE"}#{$CODE}" class="form-horizontal pull-right" style="margin: 5px;">
+
+                {form_hidden_fields form=$form}
+
+                {form_field form=$form field='success_url'}
+                    <input {if $accessInfo < 3}disabled {/if}type="hidden" name="{$name}" value="{url path="/admin/module/Fix"}" />
+                {/form_field}
+
+                <button type="submit" class="btn btn-success btn-js-loader" >{intl l="Check" d="fix"}</button>
+            </form>
+
+        {/form}
+
+        <button class="btn btn-info pull-left js-action-logs" style="margin: 5px;">{intl l="Show logs" d="fix"}</button>
+
+        <div style="clear: both"></div>
+
+        <div class="panel panel-info js-logs hide" style="margin-top: 20px;" data-code="{$CODE}">
+            <div class="panel-heading">
+                <h3 class="panel-title">{intl l="Logs" d="fix"}</h3>
+            </div>
+            <div class="panel-body" style="height: 500px; overflow: scroll; background-color: #f7f7f9;">
+                {intl l="Please wait ..." d="fix"}
+            </div>
+        </div>
+
+    </div>
+</div>

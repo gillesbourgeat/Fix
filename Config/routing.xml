@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="admin.fix.check" path="/admin/module/Fix/check/{code}" methods="post">
+        <default key="_controller">Fix\Controller\Admin\FixController::checkAction</default>
+    </route>
+
+    <route id="admin.fix.apply" path="/admin/module/Fix/apply/{code}" methods="post">
+        <default key="_controller">Fix\Controller\Admin\FixController::applyAction</default>
+    </route>
+
+    <route id="admin.fix.logs" path="/admin/module/Fix/logs/{code}" methods="get">
+        <default key="_controller">Fix\Controller\Admin\FixController::logsAction</default>
+    </route>
+
+</routes>

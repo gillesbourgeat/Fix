@@ -1,0 +1,63 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                {intl l="ID" d="fix"}
+            </th>
+            <th>
+                {intl l="Date" d="fix"}
+            </th>
+            <th>
+                {intl l="Action" d="fix"}
+            </th>
+            <th>
+                {intl l="Command" d="fix"}
+            </th>
+            <th>
+                {intl l="Admin" d="fix"}
+            </th>
+            <th>
+                {intl l="Log" d="fix"}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    {loop type="fixlog" name="logs" code="$code"}
+        <tr>
+            <td>
+                {$ID}
+            </td>
+            <td>
+                {$CREATE_DATE|regex_replace:"/ /" : "<br/>" nofilter}
+            </td>
+            <td>
+                {$ACTION}
+            </td>
+            <td>
+                {if $COMMAND}
+                    <span class="label label-success">{intl l="Yes"}</span>
+                {else}
+                    <span class="label label-default">{intl l="No"}</span>
+                {/if}
+            </td>
+            <td>
+                {if $ADMIN_ID}
+                    {loop type="admin" name="admin" id=$ADMIN_ID}
+                        <a href="{url path="/admin/configuration/administrators/"}">{$FIRSTNAME} {$LASTNAME}</a>
+                    {/loop}
+                {/if}
+            </td>
+            <td>
+                {$LOG|regex_replace:"/[\r\n]/" : "<br/>" nofilter}
+            </td>
+        </tr>
+    {/loop}
+    {elseloop rel="logs"}
+        <tr>
+            <td colspan="5" class="text-center">
+                {intl l="No logs" d="fix"}
+            </td>
+        </tr>
+    {/elseloop}
+    </tbody>
+</table>

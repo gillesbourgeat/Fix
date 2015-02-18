@@ -1,0 +1,16 @@
+{
+  "theliaVersion": [
+    ">= 2.0.0",
+    "< 2.2"
+  ],
+  "i18n": {
+    "fr_FR": {
+      "title": "Titre du fix",
+      "description": "Description du fix"
+    },
+    "en_US": {
+      "title": "Fix title",
+      "description": "Fix description"
+    }
+  }
+}

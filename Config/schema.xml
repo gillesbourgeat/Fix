@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database defaultIdMethod="native" name="thelia" namespace="Fix\Model">
+
+    <table name="fix_log">
+        <column name="id" primaryKey="true" autoIncrement="true" required="true" type="INTEGER" />
+        <column name="code" required="true" size="255" type="VARCHAR" />
+        <column name="action" size="50" required="true" type="VARCHAR" />
+        <column name="admin_id" type="INTEGER" />
+        <column name="command" type="INTEGER" />
+        <column name="log" type="CLOB" />
+
+        <behavior name="timestampable" />
+    </table>
+
+    <external-schema filename="local/config/schema.xml" referenceOnly="true" />
+</database>

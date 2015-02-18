@@ -1,0 +1,60 @@
+{loop type="fix" name="fix"}
+    {$JS}
+{/loop}
+
+<script type="text/javascript">
+    (function($, $module){
+
+        $module.find('form').submit(function(event){
+
+            $module.find('[type=submit]').attr('disabled', true);
+
+            $(this).find('.btn-js-loader').text("{intl l="Please wait ..." d="fix"}");
+        });
+
+        if (window.location.hash) {
+
+            var cl = window.location.hash.replace("#", '');
+
+            var $position = $module.find('.subModule-'+cl);
+
+            if ($position.length) {
+                $('html,body').animate({
+                    scrollTop: $position.offset().top
+                },'slow');
+            }
+        }
+
+        $module.on('click', '.js-action-logs', function(event){
+
+            event.preventDefault();
+
+            $logs = $(this).parent().find('.js-logs');
+
+            if (!$logs.is(':visible')) {
+                $logs.removeClass('hide');
+
+                var code = $logs.data('code');
+
+                $(this).text("{intl l="Hide logs" d="fix"}")
+
+                $logs.find(".panel-body").html("{intl l="Please wait ..." d="fix"}");
+
+                $.ajax({
+                    url: "{url path="/admin/module/Fix/logs"}/"+code,
+                    success: function(html) {
+                        $logs.find(".panel-body").html(html);
+                    }
+                });
+
+            } else {
+                $logs.addClass('hide');
+                $(this).text("{intl l="Show logs" d="fix"}")
+            }
+
+        });
+    }(
+        jQuery,
+        jQuery("#module-fix")
+    ));
+</script>

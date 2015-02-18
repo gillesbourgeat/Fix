@@ -1,0 +1,16 @@
+{
+  "theliaVersion": [
+    ">= 2.0.0",
+    "< 2.2"
+  ],
+  "i18n": {
+    "fr_FR": {
+      "title": "Bug position des categories",
+      "description": "Reset la position des categories. Ce fix fait suite aux sous categories dans une meme categorie qui ont la meme position"
+    },
+    "en_US": {
+      "title": "",
+      "description": ""
+    }
+  }
+}
