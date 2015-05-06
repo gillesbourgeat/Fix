@@ -42,7 +42,7 @@ class FixLoop extends BaseLoop implements ArraySearchLoopInterface
 
         $fs = new Filesystem();
 
-        $fixPath = Fix::getFixPatch();
+        $fixPath = Fix::getFixPath();
 
         $fix = [];
 

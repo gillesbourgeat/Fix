@@ -35,7 +35,7 @@ class Fix extends BaseModule
      * @param string $code
      * @return string
      */
-    public static function getFixPatch($code = '')
+    public static function getFixPath($code = '')
     {
         if (!empty($code)) {
             return THELIA_MODULE_DIR . DIRECTORY_SEPARATOR . "Fix". DIRECTORY_SEPARATOR . 'Fix' . DIRECTORY_SEPARATOR . $code;
@@ -53,7 +53,7 @@ class Fix extends BaseModule
     {
         self::checkCode($code);
 
-        if (!file_exists(self::getFixPatch($code).DS.$code.'Fix.php')) {
+        if (!file_exists(self::getFixPath($code).DS.$code.'Fix.php')) {
             throw new FixException("Fix not found");
         }
 
